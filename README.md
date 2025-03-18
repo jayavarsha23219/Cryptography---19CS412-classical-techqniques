@@ -61,8 +61,8 @@ int main()
 	// Handling lowercase letters
 	if (islower(plain[i]) && cipher[i] > 'z') {
 	cipher[i] = cipher[i] - 26;
-    }
-    printf("%c", cipher[i]);
+        }
+        printf("%c", cipher[i]);
 	}
 	cipher[length] = '\0'; // Null-terminate the cipher text string
 	printf("\nDECRYPTED TEXT: ");
