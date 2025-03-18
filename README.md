@@ -37,49 +37,54 @@ Implementation using C or pyhton code
 PROGRAM 01;
 #include <stdio.h>
 #include <string.h>
-#include <conio.h>
 #include <ctype.h>
-void main()
-
+int main() 
 {
-    char plain[10],cipher[10];
-    int key,i,length;
-    int result;
-    printf("\n Enter the plain text:");
-    scanf("%s", plain);
-    printf("\n Enter the key value:");
-    scanf("%d", &key);
-    printf("\n \n \t PLAIN TEXt: %s", plain);
-    printf("\n \n \t ENCRYPTED TEXT:");
-    for(i=0, length = strlen(plain); i<length; i++)
-    {
-        
-        cipher[i]=plain[i] + key;
-        if (isupper(plain[i]) && (cipher[i] > 'Z'))
-        cipher[i] = cipher[i] - 26;
-        if (islower(plain[i]) && (cipher[i] > 'z'))
-        cipher[i] = cipher[i] - 26;
-        printf("%c", cipher[i]);
-
+	char plain[100], cipher[100];
+	int key, i, length;
+	printf("Enter the plain text: ");
+	scanf("%s", plain);
+	printf("Enter the key value: ");
+	scanf("%d", &key);
+	printf("\nPLAIN TEXT: %s", plain);
+	printf("\nENCRYPTED TEXT: ");
+	length = strlen(plain);
+	for (i = 0; i < length; i++) {
+	cipher[i] = plain[i] + key;
+	
+	// Handling uppercase letters
+	if (isupper(plain[i]) && cipher[i] > 'Z')
+	{
+	cipher[i] = cipher[i] - 26;
+	}
+	
+	// Handling lowercase letters
+	if (islower(plain[i]) && cipher[i] > 'z') {
+	cipher[i] = cipher[i] - 26;
     }
-    printf("\n \n \t AFTER DECRYPTION : ");
-    for(i=0;i<length;i++)
-    {
-        
-        plain[i]=cipher[i]-key;
-        if(isupper(cipher[i])&&(plain[i]<'A'))
-        plain[i]=plain[i]+26;
-        if(islower(cipher[i])&&(plain[i]<'a'))
-        plain[i]=plain[i]+26;
-        printf("%c",plain[i]);
-    }
-    getch();
-
-    
+    printf("%c", cipher[i]);
+	}
+	cipher[length] = '\0'; // Null-terminate the cipher text string
+	printf("\nDECRYPTED TEXT: ");
+	for (i = 0; i < length; i++) {
+	plain[i] = cipher[i] - key;
+	// Handling uppercase letters
+	if (isupper(cipher[i]) && plain[i] < 'A') {
+	plain[i] = plain[i] + 26;
+	}
+	// Handling lowercase letters
+	if (islower(cipher[i]) && plain[i] < 'a') {
+	plain[i] = plain[i] + 26;
+	}
+	printf("%c", plain[i]);
+	}
+	plain[length] = '\0'; // Null-terminate the plain text string
+	return 0;
 }
 ```
 ## OUTPUT:
-![Screenshot 2025-03-18 141828](https://github.com/user-attachments/assets/afc5464b-8259-4e7f-936b-2db72a418fff)
+![image](https://github.com/user-attachments/assets/512c5aac-efa8-4bba-b3c8-921a8c2c1958)
+
 
 
 ## RESULT:
