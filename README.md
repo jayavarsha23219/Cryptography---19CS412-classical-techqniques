@@ -79,12 +79,8 @@ void main()
 }
 ```
 ## OUTPUT:
-OUTPUT:
-Simulating Caesar Cipher
+![Screenshot 2025-03-18 141828](https://github.com/user-attachments/assets/afc5464b-8259-4e7f-936b-2db72a418fff)
 
-
-Input : Anna University
-Encrypted Message : Dqqd Xqlyhuvlwb Decrypted Message : Anna University
 
 ## RESULT:
 The program is executed successfully
