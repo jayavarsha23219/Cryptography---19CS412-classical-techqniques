@@ -1,11 +1,11 @@
 # Cryptography---19CS412-classical-techqniques
-# DATE : 18.03.2025
-# NAME : JAYAVARSHA T
-# REG NO : 212223040075
-# Caeser Cipher
+## DATE : 18.03.2025
+## NAME : JAYAVARSHA T
+## REG NO : 212223040075
+## Caeser Cipher
 Caeser Cipher using with different key values
 
-# AIM:
+## AIM:
 
 To encrypt and decrypt the given message by using Ceaser Cipher encryption algorithm.
 
