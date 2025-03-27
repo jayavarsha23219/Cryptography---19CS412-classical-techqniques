@@ -1,89 +1,79 @@
 # Cryptography---19CS412-classical-techqniques
-## DATE : 18.03.2025
-## NAME : JAYAVARSHA T
-## REG NO : 212223040075
-## Caeser Cipher
-Caeser Cipher using with different key values
+# Hill Cipher
+Hill Cipher using with different key values
 
-## AIM:
+# AIM:
 
-To encrypt and decrypt the given message by using Ceaser Cipher encryption algorithm.
-
+To develop a simple C program to implement Hill Cipher.
 
 ## DESIGN STEPS:
 
 ### Step 1:
 
-Design of Caeser Cipher algorithnm 
+Design of Hill Cipher algorithnm 
 
 ### Step 2:
 
 Implementation using C or pyhton code
 
 ### Step 3:
-
-1.	In Ceaser Cipher each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet.
-2.	For example, with a left shift of 3, D would be replaced by A, E would become B, and so on.
-3.	The encryption can also be represented using modular arithmetic by first transforming the letters into numbers, according to the   
-    scheme, A = 0, B = 1, Z = 25.
-4.	Encryption of a letter x by a shift n can be described mathematically as,
-                       En(x) = (x + n) mod26
-5.	Decryption is performed similarly,
-                       Dn (x)=(x - n) mod26
-
+1. Convert each letter of the message to a number (A = 0, B = 1, ..., Z = 25) and dividethe message into blocks of size n.
+2. Select an invertible n × n matrix as the cipher key (modulo 26 for the English alphabet).
+3. Multiply each block of n letters by the cipher key matrix (modulo 26) to get theencrypted numbers.
+4. Convert the encrypted numbers back into letters using the reverse of step 1.
+5. Multiply the encrypted blocks by the inverse of the cipher key matrix (modulo 26) torecover the original message.
+6. Ensure the key matrix is invertible (mod 26) for decryption to be possible.
 
 ## PROGRAM:
 ```
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-int main() 
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+int main()
 {
-	char plain[100], cipher[100];
-	int key, i, length;
-	printf("Enter the plain text: ");
-	scanf("%s", plain);
-	printf("Enter the key value: ");
-	scanf("%d", &key);
-	printf("\nPLAIN TEXT: %s", plain);
-	printf("\nENCRYPTED TEXT: ");
-	length = strlen(plain);
-	for (i = 0; i < length; i++) {
-	cipher[i] = plain[i] + key;
-	
-	// Handling uppercase letters
-	if (isupper(plain[i]) && cipher[i] > 'Z')
-	{
-	cipher[i] = cipher[i] - 26;
-	}
-	
-	// Handling lowercase letters
-	if (islower(plain[i]) && cipher[i] > 'z') {
-	cipher[i] = cipher[i] - 26;
+    unsigned int a[3][3]={{6,24,1},{13,16,10},{20,17,15}};
+    unsigned int b[3][3]={{8,5,10},{21,8,21},{21,12,8}};
+    int i,j, t=0;
+    unsigned int c[20],d[20];
+    char msg[20];
+    printf("Enter plain text (3 letters):");
+    scanf("%s",msg);
+    for(i=0;i<strlen(msg);i++)
+    {
+        c[i]=msg[i]-65;
+        printf("%d ",c[i]);
+    }
+    for(i=0;i<3;i++)
+    {
+        t=0;
+        for(j=0;j<3;j++)
+        {
+            t=t+(a[i][j]*c[j]);
         }
-        printf("%c", cipher[i]);
-	}
-	cipher[length] = '\0'; // Null-terminate the cipher text string
-	printf("\nDECRYPTED TEXT: ");
-	for (i = 0; i < length; i++) {
-	plain[i] = cipher[i] - key;
-	// Handling uppercase letters
-	if (isupper(cipher[i]) && plain[i] < 'A') {
-	plain[i] = plain[i] + 26;
-	}
-	// Handling lowercase letters
-	if (islower(cipher[i]) && plain[i] < 'a') {
-	plain[i] = plain[i] + 26;
-	}
-	printf("%c", plain[i]);
-	}
-	plain[length] = '\0'; // Null-terminate the plain text string
-	return 0;
+        d[i]=t%26;
+    }
+    printf("\nEncrypted Cipher Text :");
+    for(i=0;i<3;i++)
+    printf(" %c",d[i]+65);
+    for(i=0;i<3;i++)
+    {
+        t=0;
+        for(j=0;j<3;j++)
+        {
+            t=t+(b[i][j]*d[j]);
+        }
+        c[i]=t%26;
+    }
+    printf("\nDecrypted Cipher Text :");
+    for(i=0;i<3;i++)
+    printf(" %c",c[i]+65);
+    getch();
+    return 0;
 }
 ```
 ## OUTPUT:
-![image](https://github.com/user-attachments/assets/512c5aac-efa8-4bba-b3c8-921a8c2c1958)
 
+![image](https://github.com/user-attachments/assets/840455f5-eda5-4e0e-99d7-55b341318a73)
 
 
 ## RESULT:
