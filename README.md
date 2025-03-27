@@ -1,8 +1,8 @@
 # Cryptography---19CS412-classical-techqniques
-# Hill Cipher
+## Hill Cipher
 Hill Cipher using with different key values
 
-# AIM:
+## AIM:
 
 To develop a simple C program to implement Hill Cipher.
 
